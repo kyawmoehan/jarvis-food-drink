@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette|Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+#book-banner {
+    width: 100%;
+    height: 60vh;
+    background-image: url("../storage/images/book/table2.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+#id {
+    text-align: center;
+    color: #161E33;
+    /* font-family: 'Courgette', cursive; */
+}
+
+.book-a-table {
+    width: 100%;
+    margin: 6rem auto;
+}
+
+.form-control {
+    background-color: #161E33;
+    color: white;
+}
+
+button {
+    background-color: #161E33;
+    color: #669999;
+}
+
+.carousel-caption h1 {
+    color: #161E33;
+}
+
+@font-face {
+    font-family: "Lobster";
+    src: url("../font/font.ttf");
+}
+
+.carousel-inner {
+    font-family: Lobster;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: white;
+}
+
+
+/* WebKit, Blink, Edge */
+
+.form-control:-moz-placeholder {
+    color: white;
+}
+
+
+/* Mozilla Firefox 4 to 18 */
+
+.form-control::-moz-placeholder {
+    color: white;
+}
+
+
+/* Mozilla Firefox 19+ */
+
+.form-control:-ms-input-placeholder {
+    color: white;
+}
+
+
+/* Internet Explorer 10-11 */
+
+.form-control::-ms-input-placeholder {
+    color: white;
+}
+
+
+/* Microsoft Edge */

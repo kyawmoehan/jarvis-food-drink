@@ -1,0 +1,53 @@
+#ul-class {
+    list-style: circle;
+}
+
+#about-banner {
+    width: 100%;
+    height: 60vh;
+    background-image: url("../storage/images/about/about1.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.about-us {
+    color: #161E33;
+}
+
+#tx {
+    position: absolute;
+    margin-left: 100px;
+    background-color: white;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #161E33;
+}
+
+#tx1 {
+    position: absolute;
+    margin-left: 100px;
+    background-color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: #4d0000;
+}
+
+#tx2 {
+    position: absolute;
+    margin-left: 100px;
+    background-color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: black;
+}
+
+@font-face {
+    font-family: "f";
+    src: url("font/FrancoisOne-Regular.ttf");
+}
+
+.card-title {
+    font-family: f;
+}
