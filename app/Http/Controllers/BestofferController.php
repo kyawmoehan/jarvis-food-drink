@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Bestoffer;
+use App\Category;
 
 class BestofferController extends Controller
 {
@@ -24,7 +26,11 @@ class BestofferController extends Controller
      */
     public function create()
     {
-        //
+        $offer = Bestoffer::all();
+        $categories = Category::all();
+
+        return view('layouts.pages.offer_create',compact('offer','categories'));
+
     }
 
     /**
@@ -38,9 +44,9 @@ class BestofferController extends Controller
          //validation
 
         $request->validate([
-        "title"=> 'required|min:5',
-        "variety"=>'required|min:5',
-        "image"=>'required|mimes:jpeg,jpg,png',
+        "title"=> 'required',
+        "variety"=>'required',
+        "image"=>'mimes:jpeg,jpg,png',
         "category"=>'required'
         ]);
 
@@ -89,7 +95,8 @@ class BestofferController extends Controller
     public function edit($id)
     {
         $offer = Bestoffer::find($id);
-        $categories = 
+        $categories = Category::all();
+        return view('layouts.pages.offer_edit',compact('offer','categories'));
     }
 
     /**
@@ -101,7 +108,23 @@ class BestofferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+          //Validation
+        $request->validate([
+            "title"=>'required',
+            "variety"=>'required',
+            "image"=>'mimes:jpeg,jpg,png',
+            "category"=>'required'
+        ]);
+
+        //update data
+        $offer = Bestoffer::find($id);
+        $offer->title = request('title');
+        $offer->variety = request('variety');
+        $offer->category_id = request('category');
+        $offer->save();
+ 
+       //Redirect
+        return redirect()->route('bestoffer.index');
     }
 
     /**
@@ -112,6 +135,8 @@ class BestofferController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $offer = Bestoffer::find($id);
+        $offer->delete();
+        return redirect()->route('bestoffer.index');
     }
 }

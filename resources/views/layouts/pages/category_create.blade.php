@@ -1,7 +1,9 @@
 @extends('layouts.admintemplate')
 @section('content')
 <div class="container my-5">
-<form action="{{route('category.store')}}" method="POSt" class="my-3">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <form action="{{route('category.store')}}" method="POST" class="my-3">
         @csrf
         <div class="form-group">
                 <label for="name">Add Category</label>
@@ -16,7 +18,9 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
         </div>
-        <input type="submit" name="submit"  class="btn btn-info" value="Add New">
+        <input type="submit" name="submit"  class="btn btn-primary" value="Add New">
     </form>
+        </div>        
+    </div>
 </div>
 @endsection

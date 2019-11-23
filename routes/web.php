@@ -24,7 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/home/message','MessageController');
 Route::resource('/home/category','CategoryController');
-Route::resource('/home/bestoffer','BestOfferController');
+Route::resource('/home/bestoffer','BestofferController');
+Route::resource('/home/menu','MenuController');
+
 
 
 

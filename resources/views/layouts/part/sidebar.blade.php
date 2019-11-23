@@ -30,7 +30,7 @@
                         Features
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" ><i class="fas fa-utensils"></i></i>Menu</a>
+                        <a class="nav-link" href="{{route('menu.index')}}" ><i class="fas fa-utensils"></i></i>Menu</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('category.index')}}"><i class="fas fa-fw fa-chart-pie"></i>Category</a>
@@ -39,8 +39,7 @@
                         <a class="nav-link" href="#" ><i class="fas fa-fw fa-table"></i>Table</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-heart"></i>Bestoffer</a>
-                     
+                        <a class="nav-link" href="{{route('bestoffer.index')}}"><i class="fas fa-heart"></i>Bestoffer</a>
                     </li>
                 </ul>
             </div>

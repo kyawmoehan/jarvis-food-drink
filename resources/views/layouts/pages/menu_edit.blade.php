@@ -3,17 +3,23 @@
 <div class="container my-5"> 
     <div class="row">
         <div class="col-md-8 offset-md-3">
-            <h2>BestOffer Edit Form</h2>
-           <form  method="post" action="{{route('bestoffer.update',$offer->id)}}" enctype="multipart/form-data">
+            <h2>Menu Edit Form</h2>
+           <form  method="post" action="{{route('menu.update',$menu->id)}}" enctype="multipart/form-data">
                @csrf
                @method('PUT')
                <div class="form-group">
-                   <label for="name">Title:</label>
-                   <input type="text" name="title" class="form-control" value="{{$offer->title}}">
+                   <label for="name">Name:</label>
+                   <input type="text" name="name" class="form-control" value="{{$menu->name}}">
                </div>
                 <div class="form-group">
-                   <label for="price">Variety:</label>
-                   <input type="text" name="variety" class="form-control" value="{{$offer->variety}}">
+                   <label for="price">Price:</label>
+                   <input type="number" name="price" class="form-control" value="{{$menu->price}}">
+               </div>
+                <div class="form-group">
+                   <label>Image:</label>
+                   <input type="file" name="image" class="form-control-file">
+                   <img src="{{asset($menu->image)}}" class="img-fluid" alt="">
+                   <input type="hidden" name="oldimg" value="{{$menu->image}}">
                </div>
                <div class="form-group">
                    <label>Category:</label>
@@ -23,7 +29,7 @@
                        </option>
                        @foreach($categories as $row)
                        <option value="{{$row->id}}"
-                       @if($offer->category_id == $row->id)
+                       @if($menu->category_id == $row->id)
                        {{'selected'}}
                        @endif>{{$row->name}}
                        </option>

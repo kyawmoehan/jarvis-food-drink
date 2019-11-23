@@ -3,32 +3,39 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-lg-10 offset-lg-1">
-            <h1 class="d-inline-block">Best Offer</h1>
-             <form action="{{route('bestoffer.create')}}" method="GET" class="d-inline-block float-right">
+            <h1 class="d-inline-block text-center">Menu</h1>
+            <form action="{{route('menu.create')}}" method="GET" class="d-inline-block float-right">
                 <div class="form-group">
                     <input type="submit" name="submit" class="btn btn-primary" value="Add New">
                 </div>
             </form>
+        </div>
+    </div>
+    @if(session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+    @endif
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
             <div class="table-responsive-md">
-                <table class="table my-4">
+                <table class="table">
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
-                            <th>Title</th>
-                            <th>Variety</th>
-                            <th>Category_id</th>
+                            <th>Name</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                     @foreach($offer as $offer)
+                    @foreach($menu as $menu)
                     <tr>
-                        <td>{{$offer->id}}</td>
-                        <td>{{$offer->title}}</td>
-                        <td>{{$offer->variety}}</td>
-                        <td>{{$offer->category_id}}</td>
+                        <td>{{$menu->id}}</td>
+                        <td>{{$menu->name}}</td>
+                        <td>{{$menu->price}}</td>
                         <td>
-                            <a class="btn btn-primary" href="{{route('bestoffer.edit',$offer->id)}}">Edit</a>
-                            <form action="{{route('bestoffer.destroy',$offer->id)}}" method="POST" class="d-inline-block" onsubmit="return ConfirmDelete()">
+                            <a class="btn btn-primary" href="{{route('menu.edit',$menu->id)}}">Edit</a>
+                            <form action="{{route('menu.destroy',$menu->id)}}" method="POST" class="d-inline-block" onsubmit="return ConfirmDelete()">
                                 @csrf
                                 @method('DELETE')
                                 <!-- Button trigger modal -->
@@ -57,9 +64,9 @@
             </td>
         </tr>
         @endforeach 
-                </table>
-            </div>
-        </div>
-    </div>
+    </table>
+</div>
+</div>
+</div>
 </div>
 @endsection

@@ -1,7 +1,9 @@
 @extends('layouts.admintemplate')
 @section('content')
 <div class="container my-5">
-<form action="{{route('category.update',$category->id)}}" method="POST" class="my-3">
+    <div class="row">
+       <div class="col-lg-10 offset-lg-1">
+           <form action="{{route('category.update',$category->id)}}" method="POST" class="my-3">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -17,7 +19,9 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
         </div>
-        <input type="submit" name="submit"  class="btn btn-info" value="Update">
+        <input type="submit" name="submit"  class="btn btn-primary" value="Update">
     </form>
+       </div>        
+    </div>
 </div>
 @endsection
