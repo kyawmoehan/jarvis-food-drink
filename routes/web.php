@@ -23,3 +23,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/home/message','MessageController');
+Route::resource('/home/table','TableController');
+Route::resource('/customer','CustomerController');
