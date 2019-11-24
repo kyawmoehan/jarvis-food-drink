@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token()}}">
     <link rel="icon" href="{{asset('storage/images/home/logo.png')}}">
     @yield('pagetitle')
     <link rel="stylesheet" type="text/css" href="{{asset('food_drink/bootstrap/css/bootstrap.min.css')}}">

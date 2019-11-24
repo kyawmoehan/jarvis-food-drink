@@ -65,12 +65,18 @@
                     </div>       
                 </div>
                 <div class="col-lg-3">
-                    <label for="person">People</label>
-                    <input type="number" name="person" id="person" class="form-control"><br>
+                    <div class="form-group">
+                        <label for="checktable">Table:</label>
+                        <p><a class="btn btn-info checktable">Check Table</a></p>
+                    </div>
                 </div>
-               
         </div>
         <div class="row m-4">
+            <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0">
+                <div class="form-group">
+                    <div id="avaliabletable"></div>
+                </div>
+            </div>
             <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0">
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -85,13 +91,17 @@
                     <input type="email" name="email" id="email" class="form-control">
                 </div>
                 <div class="form-group">
+                    <label for="person">People</label>
+                    <input type="number" name="person" id="person" class="form-control"><br>
+                </div> 
+                {{-- <div class="form-group">
                     <label for="table">Choose Table</label>
                    <select name="table" id="table" class="form-control">
                         @foreach($tables as $table)
                             <option value="{{$table->id}}">{{$table->number}}{{$table->type}}</option>
                         @endforeach
                    </select>
-                </div>
+                </div> --}}
                 {{-- <input type="submit" name="order" id="order" value="Order" class="btn btn-info"> --}}
                 <a href="#" class="btn btn-info" onclick="order()" data-toggle="modal" data-target="#exampleModalScrollable">Order</a>
                 <!-- Button trigger modal -->
@@ -113,7 +123,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary">Confirm</button>
+              <button type="button" class="btn btn-primary click">Confirm</button>
             </div>
           </div>
         </div>
@@ -127,6 +137,7 @@
 @endsection
 @section('script')
 <script type="text/javascript">
+  
     $(function () {
         $('#datetimepicker4').datetimepicker({
             format: 'L'
@@ -142,17 +153,16 @@
             format: 'LT'
         });
     });
-    // add to local storage
     function order(){
-        let date = document.getElementById("date").value;
-        let arrivingtime = document.getElementById("arrivingtime").value;
-        let leavingtime = document.getElementById("leavingtime").value;
-        let person = document.getElementById("person").value;
-        let name = document.getElementById("name").value;
-        let phone = document.getElementById("phone").value;
-        let email = document.getElementById("email").value;
-        let table = document.getElementById("table").value;
-        let customer = {
+        var date = document.getElementById("date").value;
+        var arrivingtime = document.getElementById("arrivingtime").value;
+        var leavingtime = document.getElementById("leavingtime").value;
+        var person = document.getElementById("person").value;
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var email = document.getElementById("email").value;
+        var table = document.getElementById("table").value;
+        var customer = {
             date : date,
             arrivingtime : arrivingtime,
             leavingtime : leavingtime,
@@ -169,7 +179,6 @@
    
     function confirm(){
         let confirm=JSON.parse(localStorage.getItem('jarvisorder'));
-        console.log(confirm);
         let html = `<table>
             <tr>
                 <th class="p-3">Name </th>
@@ -206,6 +215,82 @@
         </table>`;
         document.getElementById('confirmation').innerHTML = html;
     }
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.click').click(function(){
+            let customer=JSON.parse(localStorage.getItem('jarvisorder'));
+            //console.log(customer.name);
+           $.post("{{route('customer.store')}}",{customer:customer},function(response){
+               console.log(response);
+               if(response ==="success"){
+                     location.reload();
+               }
+           });    
+        })
+        // check table
+        $('.checktable').click(function(){
+            $.post("{{route('checktable')}}",function(response){
+                var date = $('#date').val();
+                var arrivingtime = $('#arrivingtime').val();
+                var leavingtime = $('#leavingtime').val();
+
+                var occupy_table =[];
+                var avaliable_table = [];
+                var all_table = [];
+                var table_state = false;
+                var html = ' <select name="table" id="table" class="form-control">';
+                $.each(response[1],function(key,value){
+                    all_table.push(value.number);
+                });
+               $.each(response[0],function(key,value){
+                   
+                    if(value['date'] === date){
+                        console.log('table not free');
+                        table_state = false;
+                        return false;
+                    }else{
+                        table_state = true;
+                    }
+                });
+                if(table_state){
+                     $.each(all_table,function(key,value){
+                        console.log(value);
+                        html += `<option value="${value}">${value}</option>`;
+                    });
+                    html += '</select>';
+                    $('#avaliabletable').html(html);
+                }
+                if(!table_state){
+                    $.each(response[0],function(key1,value1){
+                        if(value1.date === date){
+                            $.each(response[1],function(key2,value2){
+                               if(value1.table == value2.number){
+                                    occupy_table.push(value2.number);
+                               }
+                               avaliable_table = all_table.filter(val => !occupy_table.includes(val));
+                               //$('#avaliabletable').html(avaliable_table);
+                            });
+                        }
+                    });
+                    console.log(avaliable_table);
+                    if (avaliable_table === undefined || avaliable_table == 0) {
+                        $('#avaliabletable').html("<h2>We are sorry</h2>");
+                    }else{
+                        $.each(avaliable_table,function(key,value){
+                            console.log(value);
+                            html += `<option value="${value}">${value}</option>`;
+                        });
+                        html += '</select>';
+                        $('#avaliabletable').html(html);
+                    }
+                }               
+            });
+        });
+    })
    
 </script>
 @endsection

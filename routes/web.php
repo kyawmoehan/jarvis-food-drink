@@ -25,3 +25,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/home/message','MessageController');
 Route::resource('/home/table','TableController');
 Route::resource('/customer','CustomerController');
+Route::post('/booktable/checktable', 'CustomerController@checktable')->name('checktable');
+

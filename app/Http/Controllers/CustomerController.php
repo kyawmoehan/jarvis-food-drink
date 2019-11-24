@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Customer;
+use App\Table;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,7 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
@@ -34,7 +35,26 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // validation
+
+        // store data
+        $customer = new Customer();
+        $customer->name=request('customer.name');
+        $customer->phone=request('customer.phone');
+        $customer->email=request('customer.email');
+        $customer->person=request('customer.person');
+        $customer->date=request('customer.date');
+        $customer->arrivingtime=request('customer.arrivingtime');
+        $customer->leavingtime=request('customer.leavingtime');
+        $customer->table=request('customer.table');
+        $customer->status=false;
+        $customer->save();
+
+
+        // redirect
+       
+        return  "success";
+
     }
 
     /**
@@ -81,4 +101,11 @@ class CustomerController extends Controller
     {
         //
     }
+    public function checktable(){
+        $customers = Customer::all();
+        $Tables = Table::all();
+        $info =[$customers,$Tables];
+        return $info;
+    }
+ 
 }
