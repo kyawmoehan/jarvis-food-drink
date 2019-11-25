@@ -4,6 +4,7 @@
 @endsection
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{asset('food_drink/foodanddrink.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('food_drink/bookandtable.css')}}">
 @endsection
 @section('navbar')
 <div id="book-banner">
@@ -296,12 +297,14 @@
                                
                             }
                         });
-                        // if(arraysMatch(All_Table,occupy_table)){
-                        //     console.log("match");
-                        //     $("#user-info").hide();
-                        //     $('#avaliabletable').html("<h2>We are sorry</h2>");
-                        // }
+                        if(arraysMatch(All_Table,occupy_table)){
+                            console.log("match");
+                            $("#user-info").hide();
+                            $('#avaliabletable').html("<h2>We are sorry</h2>");
+                            return false;
+                        }else{
                             avaliable_table = all_table.filter(val => !occupy_table.includes(val));
+                        }
                         if((avaliable_table === undefined || avaliable_table == 0)) {
                             $("#user-info").show();
                             $.each(response[1],function(key,value){
