@@ -9,4 +9,8 @@ class Menu extends Model
     protected $fillable = [
         'name','price','image','category_id'
     ];
+    public function categories($value='')
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

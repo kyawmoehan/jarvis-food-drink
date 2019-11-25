@@ -18,7 +18,7 @@
                         <a class="nav-link" href="#" ><i class="fas fa-bookmark"></i>Booking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard-finance.html"><i class="fas fa-star"></i>Rating</a>
+                        <a class="nav-link" href="{{route('rating.index')}}"><i class="fas fa-star"></i>Rating</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{route('message.index')}}"><i class="fas fa-envelope"></i>Message</a>

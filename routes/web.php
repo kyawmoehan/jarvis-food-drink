@@ -26,6 +26,9 @@ Route::resource('/home/message','MessageController');
 Route::resource('/home/category','CategoryController');
 Route::resource('/home/bestoffer','BestofferController');
 Route::resource('/home/menu','MenuController');
+Route::resource('/home/rating','RatingController');
+Route::post('/getratings','RatingController@getratings')->name('getratings');
+
 
 
 

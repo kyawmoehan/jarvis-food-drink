@@ -1,9 +1,9 @@
 @extends('template')
 @section('pagetitle')
-    <title>Jarvis - Drink Menu</title>
+<title>Jarvis - Drink Menu</title>
 @endsection
 @section('style')
-    <link rel="stylesheet" type="text/css" href="{{asset('food_drink/foodanddrink.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('food_drink/foodanddrink.css')}}">
 @endsection
 @section('navbar')
 <div id="drink-banner">
@@ -15,5 +15,45 @@
             </div>
         </div>
     </div>
- </div>
+</div>
+@endsection
+@section('content')
+<div class="container">
+    <div class="food-quote">
+        <h2>Join us for your next meal!</h2>
+    </div>
+</div>
+<div class="container mt-2 mb-5">
+
+    <div class="row">
+        @foreach($drinks as $drink)
+
+        <div class="col-lg-4">
+            <div class="card">
+                <img src="{{asset($drink->image)}}" class="card-img-top">
+                <div class="con">
+                    <div class="card-body">
+                        <h3>{{$drink->name}}</h3>
+                        <h5>{{$drink->price}}</h5>
+                         <div class="star-rating"><s><s><s><s><s></s></s></s></s></s></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+
+    </div>        
+</div>
+@endsection
+@section('script')
+<script>
+    $(function() {
+    $("div.star-rating > s").on("click", function(e) {
+        var numStars = $(e.target).parentsUntil("div").length+1;
+        alert(numStars + (numStars == 1 ? " star" : " stars!"));
+    });
+});
+
+</script>
 @endsection

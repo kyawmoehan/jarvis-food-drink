@@ -28,13 +28,14 @@
                     <div class="offers-box">
                         <div>
                             <p>
-                                <strong>Pizza</strong>Chicken, Cheese, Bacon
+                                <strong>{{$bestoffers[0]['title']}}</strong>
+                                {{$bestoffers[0]['variety']}}
                             </p>
                             <p>
-                                <strong>Burger</strong>Chicken, Beef, Bacon
+                                <strong>{{$bestoffers[1]['title']}}</strong>{{$bestoffers[1]['variety']}}
                             </p>
                             <p>
-                                <strong>Noodle</strong>Pork , Fired , Tom Yum Soup
+                                <strong>{{$bestoffers[2]['title']}}</strong>{{$bestoffers[2]['variety']}}
                             </p>
                             <a href="{{route('Food')}}" class="btn-2">Discover More</a>
                         </div>
@@ -43,13 +44,13 @@
                     <div class="offers-box">
                         <div>
                             <p>
-                                <strong>Smoothie</strong>Strawberry, Broccoli
+                                <strong>{{$bestoffers[3]['title']}}</strong>{{$bestoffers[3]['variety']}}
                             </p>
                             <p>
-                                <strong>Coffee</strong>Cappuccino, Espresso, Cold Brew
+                                <strong>{{$bestoffers[4]['title']}}</strong>{{$bestoffers[4]['variety']}}
                             </p>
                             <p>
-                                <strong>Icecream</strong>Strawberry, Chocolate, BuleBerry
+                                <strong>{{$bestoffers[5]['title']}}</strong>{{$bestoffers[5]['variety']}}
                             </p>
                             <a href="{{route('Drink')}}" class="btn-2">Discover More</a>
                         </div>
