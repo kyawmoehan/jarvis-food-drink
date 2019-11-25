@@ -28,10 +28,13 @@
 
    @yield('content')
     <!-- write code  end here -->
+
     <!-- footer -->
     @include('part.footer')
       <!-- script -->
+
     <script src="{{asset('food_drink/scripts/navbar.js')}}"></script>
+
     @yield('script')
 </body>
 

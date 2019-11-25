@@ -132,3 +132,33 @@ ul li {
         margin-top: 3rem;
     }
 }
+
+
+
+.star-rating s:hover {
+    color: yellow;
+}
+
+.star-rating s {
+    color: white;
+    font-size: 35px;
+    cursor: default;
+    text-decoration: none;
+    line-height: 50px;
+}
+.star-rating {
+    padding: 2px;
+}
+
+.star-rating s:hover:before, .star-rating s.rated:before {
+    content: "\2605";
+}
+.star-rating s:before {
+    content: "\2606";
+}
+.star-rating-rtl s:hover:after, .star-rating-rtl s.rated:after{
+    content: "\2605";
+}
+.star-rating-rtl s:after {
+    content: "\2606";
+}

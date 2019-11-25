@@ -18,7 +18,7 @@
                         <a class="nav-link" href="#" ><i class="fas fa-bookmark"></i>Booking</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="dashboard-finance.html"><i class="fas fa-star"></i>Rating</a>
+                        <a class="nav-link" href="{{route('rating.index')}}"><i class="fas fa-star"></i>Rating</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{route('message.index')}}"><i class="fas fa-envelope"></i>Message</a>
@@ -30,17 +30,16 @@
                         Features
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" ><i class="fas fa-utensils"></i></i>Menu</a>
+                        <a class="nav-link" href="{{route('menu.index')}}" ><i class="fas fa-utensils"></i></i>Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-fw fa-chart-pie"></i>Category</a>
+                        <a class="nav-link" href="{{route('category.index')}}"><i class="fas fa-fw fa-chart-pie"></i>Category</a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('table.index')}}" ><i class="fas fa-fw fa-table"></i>Table</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-heart"></i>Bestoffer</a>
-                     
+                        <a class="nav-link" href="{{route('bestoffer.index')}}"><i class="fas fa-heart"></i>Bestoffer</a>
                     </li>
                 </ul>
             </div>

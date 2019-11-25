@@ -23,7 +23,16 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/home/message','MessageController');
+
+Route::resource('/home/category','CategoryController');
+Route::resource('/home/bestoffer','BestofferController');
+Route::resource('/home/menu','MenuController');
+Route::resource('/home/rating','RatingController');
+Route::post('/getratings','RatingController@getratings')->name('getratings');
+
+
 Route::resource('/home/table','TableController');
 Route::resource('/customer','CustomerController');
 Route::post('/booktable/checktable', 'CustomerController@checktable')->name('checktable');
+
 
