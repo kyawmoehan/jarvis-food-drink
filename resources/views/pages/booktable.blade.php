@@ -77,7 +77,7 @@
                     <div id="avaliabletable"></div>
                 </div>
             </div>
-            <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0">
+            <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0" id="user-info">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name"  class="form-control">
@@ -216,6 +216,8 @@
         document.getElementById('confirmation').innerHTML = html;
     }
     $(document).ready(function(){
+        // hide user info
+        $("#user-info").hide();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -241,55 +243,123 @@
                 var occupy_table =[];
                 var avaliable_table = [];
                 var all_table = [];
+                var All_Table = [];
                 var table_state = false;
+               var tables;
                 var html = ' <select name="table" id="table" class="form-control">';
+                // all table
                 $.each(response[1],function(key,value){
                     all_table.push(value.number);
                 });
+                // table state
                $.each(response[0],function(key,value){
-                   
+
                     if(value['date'] === date){
-                        console.log('table not free');
                         table_state = false;
                         return false;
                     }else{
                         table_state = true;
                     }
                 });
+                // all free table
                 if(table_state){
-                     $.each(all_table,function(key,value){
-                        console.log(value);
-                        html += `<option value="${value}">${value}</option>`;
-                    });
+                    $("#user-info").show();
+                    $.each(response[1],function(key,value){
+                            $.each(all_table,function(keya,valuea){
+                                if(value.number == valuea){
+                                    html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                                }
+                            });
+                        });
                     html += '</select>';
                     $('#avaliabletable').html(html);
                 }
+                // avilable table
                 if(!table_state){
                     $.each(response[0],function(key1,value1){
                         if(value1.date === date){
-                            $.each(response[1],function(key2,value2){
-                               if(value1.table == value2.number){
-                                    occupy_table.push(value2.number);
-                               }
-                               avaliable_table = all_table.filter(val => !occupy_table.includes(val));
-                               //$('#avaliabletable').html(avaliable_table);
-                            });
+                            All_Table.push(parseInt(value1.table));   
                         }
+                       
                     });
-                    console.log(avaliable_table);
-                    if (avaliable_table === undefined || avaliable_table == 0) {
-                        $('#avaliabletable').html("<h2>We are sorry</h2>");
-                    }else{
-                        $.each(avaliable_table,function(key,value){
-                            console.log(value);
-                            html += `<option value="${value}">${value}</option>`;
+                    // else{
+                        $.each(response[0],function(key1,value1){
+                            if(value1.date === date){
+                                if(timeChanger(arrivingtime)>=timeChanger(value1.arrivingtime) && timeChanger(arrivingtime)<= timeChanger(value1.leavingtime)){
+                                    $.each(response[1],function(key2,value2){
+                                        if(value1.table == value2.number){
+                                            occupy_table.push(value2.number);
+                                        }
+                                       
+                                    });
+                                }
+                               
+                            }
                         });
-                        html += '</select>';
-                        $('#avaliabletable').html(html);
-                    }
+                        // if(arraysMatch(All_Table,occupy_table)){
+                        //     console.log("match");
+                        //     $("#user-info").hide();
+                        //     $('#avaliabletable').html("<h2>We are sorry</h2>");
+                        // }
+                            avaliable_table = all_table.filter(val => !occupy_table.includes(val));
+                        if((avaliable_table === undefined || avaliable_table == 0)) {
+                            $("#user-info").show();
+                            $.each(response[1],function(key,value){
+                                    $.each(all_table,function(keya,valuea){
+                                        if(value.number == valuea){
+                                            html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                                        }
+                                    });
+                                });
+                            html += '</select>';
+                            $('#avaliabletable').html(html);
+                        }else{
+                            $("#user-info").show();
+                                $.each(response[1],function(key,value){
+                                    $.each(avaliable_table,function(keya,valuea){
+                                        if(value.number == valuea){
+                                            html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                                        }
+                                    });
+                                });
+                                html += '</select>';
+                                $('#avaliabletable').html(html);
+                        }
+                    // }
+                    
                 }               
             });
+            
         });
+
+        // time change string to time hour function
+        function timeChanger(time){
+            for(i = 0;i <= time.length; i++){
+                if(time[i] == ':'){
+                    var hour = parseInt(time.slice(0,i));
+                }
+                if(time[i] == " "){
+                    var duration = time.slice(i+1,);
+                }
+                if(duration == "AM"){
+                    time_hour = hour;
+                }else if(duration == "PM"){
+                    time_hour = hour+12;
+                }
+            }
+            return time_hour;
+        }
+        // array match
+        var arraysMatch = function (arr1, arr2) {
+            // Check if the arrays are the same length
+            if (arr1.length !== arr2.length) return false;
+            // Check if all items exist and are in the same order
+            for (var i = 0; i < arr1.length; i++) {
+                if (arr1[i] !== arr2[i]) return false;
+            }
+            // Otherwise, return true
+            return true;
+        };
     })
    
 </script>
