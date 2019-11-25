@@ -278,11 +278,12 @@
                 // avilable table
                 if(!table_state){
                     $.each(response[0],function(key1,value1){
-                        if(value1.date === date){
+                        // if(value1.date === date){
                             All_Table.push(parseInt(value1.table));   
-                        }
+                        // }
                        
                     });
+                    console.log(All_Table);
                     // else{
                         $.each(response[0],function(key1,value1){
                             if(value1.date === date){
