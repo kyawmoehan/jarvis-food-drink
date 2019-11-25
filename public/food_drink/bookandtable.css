@@ -8,72 +8,23 @@
     background-position: top center;
     background-size: cover;
 }
-
-#id {
-    text-align: center;
-    color: #161E33;
-    /* font-family: 'Courgette', cursive; */
-}
-
-.book-a-table {
-    width: 100%;
-    margin: 6rem auto;
-}
-
-.form-control {
-    background-color: #161E33;
-    color: white;
-}
-
-button {
-    background-color: #161E33;
-    color: #669999;
-}
-
-.carousel-caption h1 {
-    color: #161E33;
-}
-
 @font-face {
     font-family: "Lobster";
     src: url("../font/font.ttf");
 }
 
-.carousel-inner {
-    font-family: Lobster;
+.reservation-title{
+    font-size: 1.6rem;
+    font-weight: bold;
 }
-
-.form-control::-webkit-input-placeholder {
-    color: white;
+/* responsive */
+@media (max-width: 800px) {
+   .reservation-title{
+       font-size: 1.3rem;
+   }
 }
-
-
-/* WebKit, Blink, Edge */
-
-.form-control:-moz-placeholder {
-    color: white;
-}
-
-
-/* Mozilla Firefox 4 to 18 */
-
-.form-control::-moz-placeholder {
-    color: white;
-}
-
-
-/* Mozilla Firefox 19+ */
-
-.form-control:-ms-input-placeholder {
-    color: white;
-}
-
-
-/* Internet Explorer 10-11 */
-
-.form-control::-ms-input-placeholder {
-    color: white;
-}
-
-
-/* Microsoft Edge */
+@media (max-width: 500px) {
+    .reservation-title{
+        font-size: 1.1rem;
+    }
+ }

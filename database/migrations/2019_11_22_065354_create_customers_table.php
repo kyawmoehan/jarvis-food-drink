@@ -18,6 +18,7 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->smallInteger('phone');
             $table->string('email');
+            $table->smallInteger('person');
             $table->date('date');
             $table->string('arrivingtime');
             $table->string('leavingtime');

@@ -36,7 +36,7 @@
                         <a class="nav-link" href="#"><i class="fas fa-fw fa-chart-pie"></i>Category</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#" ><i class="fas fa-fw fa-table"></i>Table</a>
+                        <a class="nav-link" href="{{route('table.index')}}" ><i class="fas fa-fw fa-table"></i>Table</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-heart"></i>Bestoffer</a>

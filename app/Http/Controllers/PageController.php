@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Table;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -19,7 +19,8 @@ class PageController extends Controller
     }
     public function booktable($var = '')
     {
-        return view('pages/booktable');
+        $tables = Table::all();
+        return view('pages/booktable',compact('tables'));
     }
     public function about($var = '')
     {
