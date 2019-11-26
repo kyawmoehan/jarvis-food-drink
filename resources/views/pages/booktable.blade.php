@@ -75,6 +75,22 @@
         <div class="row m-4">
             <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0">
                 <div class="form-group">
+                    <div id="show-table">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <p>Small Table</p>
+                                <img src="{{asset('storage/images/book/tables.png')}}" alt="">
+                            </div>
+                            <div class="col-lg-4">
+                                <p>Medium Table</p>
+                                <img src="{{asset('storage/images/book/tablem.png')}}" alt="">
+                            </div>
+                            <div class="col-lg-4">
+                                <p>Large Table</p>
+                                <img src="{{asset('storage/images/book/tablel.png')}}" alt="">
+                            </div>
+                        </div>
+                    </div>
                     <div id="avaliabletable"></div>
                 </div>
             </div>
@@ -219,6 +235,7 @@
     $(document).ready(function(){
         // hide user info
         $("#user-info").hide();
+        $("#show-table").hide();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -265,6 +282,7 @@
                 // all free table
                 if(table_state){
                     $("#user-info").show();
+                    $("#show-table").show();
                     $.each(response[1],function(key,value){
                             $.each(all_table,function(keya,valuea){
                                 if(value.number == valuea){
@@ -301,6 +319,7 @@
                         if(arraysMatch(All_Table,occupy_table)){
                             console.log("match");
                             $("#user-info").hide();
+                            $("#show-table").hide();
                             $('#avaliabletable').html("<h2>We are sorry</h2>");
                             return false;
                         }else{
@@ -320,6 +339,7 @@
                             // $('#avaliabletable').html(html);
                             console.log("match");
                             $("#user-info").hide();
+                            $("#show-table").hide();
                             $('#avaliabletable').html("<h2>We are sorry</h2>");
                             return false;
                         }else{
