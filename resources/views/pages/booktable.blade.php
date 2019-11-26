@@ -344,6 +344,7 @@
                             return false;
                         }else{
                             $("#user-info").show();
+                            $("#show-table").show();
                                 $.each(response[1],function(key,value){
                                     $.each(avaliable_table,function(keya,valuea){
                                         if(value.number == valuea){
