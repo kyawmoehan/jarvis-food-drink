@@ -306,17 +306,22 @@
                         }else{
                             avaliable_table = all_table.filter(val => !occupy_table.includes(val));
                         }
+                        console.log(avaliable_table);
                         if((avaliable_table === undefined || avaliable_table == 0)) {
-                            $("#user-info").show();
-                            $.each(response[1],function(key,value){
-                                    $.each(all_table,function(keya,valuea){
-                                        if(value.number == valuea){
-                                            html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
-                                        }
-                                    });
-                                });
-                            html += '</select>';
-                            $('#avaliabletable').html(html);
+                            // $("#user-info").show();
+                            // $.each(response[1],function(key,value){
+                            //         $.each(all_table,function(keya,valuea){
+                            //             if(value.number == valuea){
+                            //                 html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                            //             }
+                            //         });
+                            //     });
+                            // html += '</select>';
+                            // $('#avaliabletable').html(html);
+                            console.log("match");
+                            $("#user-info").hide();
+                            $('#avaliabletable').html("<h2>We are sorry</h2>");
+                            return false;
                         }else{
                             $("#user-info").show();
                                 $.each(response[1],function(key,value){
