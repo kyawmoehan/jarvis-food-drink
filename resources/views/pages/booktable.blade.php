@@ -4,7 +4,7 @@
 @endsection
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{asset('food_drink/foodanddrink.css')}}">
-     <link rel="stylesheet" type="text/css" href="{{asset('food_drink/bookandtable.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('food_drink/bookandtable.css')}}">
 @endsection
 @section('navbar')
 <div id="book-banner">
@@ -75,6 +75,22 @@
         <div class="row m-4">
             <div class="col-lg-8 offset-lg-2 col-md-12 offset-md-0">
                 <div class="form-group">
+                    <div id="show-table">
+                        <div class="row">
+                            <div class="col-lg-4 text-center">
+                                <h5>Small</h5>
+                                <img src="{{asset('storage/images/book/tables.png')}}" alt="">
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <h5>Medium</h5>
+                                <img src="{{asset('storage/images/book/tablem.png')}}" alt="">
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <h5>Large</h5>
+                                <img src="{{asset('storage/images/book/tablel.png')}}" alt="">
+                            </div>
+                        </div>
+                    </div>
                     <div id="avaliabletable"></div>
                 </div>
             </div>
@@ -219,6 +235,7 @@
     $(document).ready(function(){
         // hide user info
         $("#user-info").hide();
+        $("#show-table").hide();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -247,7 +264,7 @@
                 var All_Table = [];
                 var table_state = false;
                var tables;
-                var html = ' <select name="table" id="table" class="form-control">';
+                var html = ' <h5>Choose Table</h5><select name="table" id="table" class="form-control">';
                 // all table
                 $.each(response[1],function(key,value){
                     all_table.push(value.number);
@@ -265,10 +282,11 @@
                 // all free table
                 if(table_state){
                     $("#user-info").show();
+                    $("#show-table").show();
                     $.each(response[1],function(key,value){
                             $.each(all_table,function(keya,valuea){
                                 if(value.number == valuea){
-                                    html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                                    html += `<option value="${value.id}">${value.number}(${value.type})</option>`;
                                 }
                             });
                         });
@@ -278,11 +296,12 @@
                 // avilable table
                 if(!table_state){
                     $.each(response[0],function(key1,value1){
-                        if(value1.date === date){
+                        // if(value1.date === date){
                             All_Table.push(parseInt(value1.table));   
-                        }
+                        // }
                        
                     });
+                    console.log(All_Table);
                     // else{
                         $.each(response[0],function(key1,value1){
                             if(value1.date === date){
@@ -297,25 +316,35 @@
                                
                             }
                         });
-                        // if(arraysMatch(All_Table,occupy_table)){
-                        //     console.log("match");
-                        //     $("#user-info").hide();
-                        //     $('#avaliabletable').html("<h2>We are sorry</h2>");
-                        // }
+                        if(arraysMatch(All_Table,occupy_table)){
+                            console.log("match");
+                            $("#user-info").hide();
+                            $("#show-table").hide();
+                            $('#avaliabletable').html("<h2>We are sorry</h2>");
+                            return false;
+                        }else{
                             avaliable_table = all_table.filter(val => !occupy_table.includes(val));
+                        }
+                        console.log(avaliable_table);
                         if((avaliable_table === undefined || avaliable_table == 0)) {
-                            $("#user-info").show();
-                            $.each(response[1],function(key,value){
-                                    $.each(all_table,function(keya,valuea){
-                                        if(value.number == valuea){
-                                            html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
-                                        }
-                                    });
-                                });
-                            html += '</select>';
-                            $('#avaliabletable').html(html);
+                            // $("#user-info").show();
+                            // $.each(response[1],function(key,value){
+                            //         $.each(all_table,function(keya,valuea){
+                            //             if(value.number == valuea){
+                            //                 html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                            //             }
+                            //         });
+                            //     });
+                            // html += '</select>';
+                            // $('#avaliabletable').html(html);
+                            console.log("match");
+                            $("#user-info").hide();
+                            $("#show-table").hide();
+                            $('#avaliabletable').html("<h2>We are sorry</h2>");
+                            return false;
                         }else{
                             $("#user-info").show();
+                            $("#show-table").show();
                                 $.each(response[1],function(key,value){
                                     $.each(avaliable_table,function(keya,valuea){
                                         if(value.number == valuea){
