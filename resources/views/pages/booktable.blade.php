@@ -77,16 +77,16 @@
                 <div class="form-group">
                     <div id="show-table">
                         <div class="row">
-                            <div class="col-lg-4">
-                                <p>Small Table</p>
+                            <div class="col-lg-4 text-center">
+                                <h5>Small</h5>
                                 <img src="{{asset('storage/images/book/tables.png')}}" alt="">
                             </div>
-                            <div class="col-lg-4">
-                                <p>Medium Table</p>
+                            <div class="col-lg-4 text-center">
+                                <h5>Medium</h5>
                                 <img src="{{asset('storage/images/book/tablem.png')}}" alt="">
                             </div>
-                            <div class="col-lg-4">
-                                <p>Large Table</p>
+                            <div class="col-lg-4 text-center">
+                                <h5>Large</h5>
                                 <img src="{{asset('storage/images/book/tablel.png')}}" alt="">
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                 var All_Table = [];
                 var table_state = false;
                var tables;
-                var html = ' <select name="table" id="table" class="form-control">';
+                var html = ' <h5>Choose Table</h5><select name="table" id="table" class="form-control">';
                 // all table
                 $.each(response[1],function(key,value){
                     all_table.push(value.number);
@@ -286,7 +286,7 @@
                     $.each(response[1],function(key,value){
                             $.each(all_table,function(keya,valuea){
                                 if(value.number == valuea){
-                                    html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                                    html += `<option value="${value.id}">${value.number}(${value.type})</option>`;
                                 }
                             });
                         });
