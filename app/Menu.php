@@ -11,6 +11,6 @@ class Menu extends Model
     ];
     public function categories($value='')
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category','category_id');
     }
 }

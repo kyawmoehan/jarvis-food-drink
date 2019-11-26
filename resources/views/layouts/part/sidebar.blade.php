@@ -11,11 +11,11 @@
                         Menu
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link active" href="#" ><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                        <a class="nav-link active" href="{{route('dashboard.index')}}" ><i class="fa fa-fw fa-user-circle"></i>Dashboard </a>
                        
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" ><i class="fas fa-bookmark"></i>Booking</a>
+                        <a class="nav-link" href="{{route('customer.index')}}" ><i class="fas fa-bookmark"></i>Booking</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('rating.index')}}"><i class="fas fa-star"></i>Rating</a>

@@ -16,7 +16,7 @@
                             <th>No</th>
                             <th>Title</th>
                             <th>Variety</th>
-                            <th>Category_id</th>
+                            <th>Category</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -25,7 +25,7 @@
                         <td>{{$offer->id}}</td>
                         <td>{{$offer->title}}</td>
                         <td>{{$offer->variety}}</td>
-                        <td>{{$offer->category_id}}</td>
+                        <td>{{$offer->categories->name}}</td>
                         <td>
                             <a class="btn btn-primary" href="{{route('bestoffer.edit',$offer->id)}}">Edit</a>
                             <form action="{{route('bestoffer.destroy',$offer->id)}}" method="POST" class="d-inline-block" onsubmit="return ConfirmDelete()">

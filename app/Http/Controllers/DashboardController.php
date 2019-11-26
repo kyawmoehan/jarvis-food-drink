@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Customer;
-use App\Table;
-use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+use Illuminate\Http\Request;
+use App\Customer;
+use App\Message;
+
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-       $booking = Customer::all();
-        return view('layouts.pages.customer',compact('booking'));
+        $booking = Customer::all();
+        $messages = Message::all();
+        return view('layouts.pages.dashboard',compact('booking','messages'));
+
     }
 
     /**
@@ -25,7 +28,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -36,26 +39,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        // validation
-
-        // store data
-        $customer = new Customer();
-        $customer->name=request('customer.name');
-        $customer->phone=request('customer.phone');
-        $customer->email=request('customer.email');
-        $customer->person=request('customer.person');
-        $customer->date=request('customer.date');
-        $customer->arrivingtime=request('customer.arrivingtime');
-        $customer->leavingtime=request('customer.leavingtime');
-        $customer->table=request('customer.table');
-        $customer->status=false;
-        $customer->save();
-
-
-        // redirect
-       
-        return  "success";
-
+        //
     }
 
     /**
@@ -102,11 +86,4 @@ class CustomerController extends Controller
     {
         //
     }
-    public function checktable(){
-        $customers = Customer::all();
-        $Tables = Table::all();
-        $info =[$customers,$Tables];
-        return $info;
-    }
- 
 }

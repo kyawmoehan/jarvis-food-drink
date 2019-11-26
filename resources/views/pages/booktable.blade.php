@@ -4,6 +4,7 @@
 @endsection
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{asset('food_drink/foodanddrink.css')}}">
+     <link rel="stylesheet" type="text/css" href="{{asset('food_drink/bookandtable.css')}}">
 @endsection
 @section('navbar')
 <div id="book-banner">
