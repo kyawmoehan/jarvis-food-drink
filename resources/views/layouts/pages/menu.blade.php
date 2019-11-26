@@ -34,7 +34,7 @@
                         <td>{{$menu->id}}</td>
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->price}}</td>
-                        <td>{{$menu->category_id}}</td>
+                        <td>{{$menu->categories->name}}</td>
                         <td>
                             <a class="btn btn-primary" href="{{route('menu.edit',$menu->id)}}">Edit</a>
                             <form action="{{route('menu.destroy',$menu->id)}}" method="POST" class="d-inline-block" onsubmit="return ConfirmDelete()">

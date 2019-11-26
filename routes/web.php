@@ -34,5 +34,6 @@ Route::post('/getratings','RatingController@getratings')->name('getratings');
 Route::resource('/home/table','TableController');
 Route::resource('/customer','CustomerController');
 Route::post('/booktable/checktable', 'CustomerController@checktable')->name('checktable');
+Route::resource('/home/dashboard','DashboardController');
 
 
