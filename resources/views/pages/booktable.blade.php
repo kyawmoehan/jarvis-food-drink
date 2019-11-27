@@ -286,7 +286,7 @@
                     $.each(response[1],function(key,value){
                             $.each(all_table,function(keya,valuea){
                                 if(value.number == valuea){
-                                    html += `<option value="${value.id}">${value.number}(${value.type})</option>`;
+                                    html += `<option value="${value.number}">${value.number}(${value.type})</option>`;
                                 }
                             });
                         });
@@ -348,7 +348,7 @@
                                 $.each(response[1],function(key,value){
                                     $.each(avaliable_table,function(keya,valuea){
                                         if(value.number == valuea){
-                                            html += `<option value="${value.id}">${value.number}-${value.type}</option>`;
+                                            html += `<option value="${value.number}">${value.number}-${value.type}</option>`;
                                         }
                                     });
                                 });

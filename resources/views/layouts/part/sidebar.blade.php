@@ -15,6 +15,12 @@
                        
                     </li>
                     <li class="nav-item">
+                            <a class="nav-link" href="{{route('report')}}"><i class="fas fa-calendar-day"></i>Today</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('monthlyview')}}"><i class="fas fa-calendar-alt"></i>Monthly</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{route('customer.index')}}" ><i class="fas fa-bookmark"></i>Booking</a>
                     </li>
                     <li class="nav-item">
@@ -22,9 +28,6 @@
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{route('message.index')}}"><i class="fas fa-envelope"></i>Message</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="dashboard-sales.html"><i class="fas fa-shopping-cart"></i>Order</a>
                     </li>
                     <li class="nav-divider">
                         Features

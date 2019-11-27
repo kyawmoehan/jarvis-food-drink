@@ -28,6 +28,7 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token()}}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('admin/assets/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -39,6 +40,7 @@
     <link rel="stylesheet" href="{{asset('admin/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/vendor/charts/c3charts/c3.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
+    <script src="https://kit.fontawesome.com/58ec7c6d3d.js" crossorigin="anonymous"></script>
     <title>Jarvis - Food & Drink</title>
 </head>
 
@@ -104,6 +106,7 @@
 <script src="{{asset('admin/assets/vendor/charts/c3charts/d3-5.4.0.min.js')}}"></script>
 <script src="{{asset('admin/assets/vendor/charts/c3charts/C3chartjs.js')}}"></script>
 <script src="{{asset('admin/assets/libs/js/dashboard-ecommerce.js')}}"></script>
+@yield('script')
 </body>
  
 </html>

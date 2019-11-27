@@ -34,6 +34,9 @@ Route::post('/getratings','RatingController@getratings')->name('getratings');
 Route::resource('/home/table','TableController');
 Route::resource('/customer','CustomerController');
 Route::post('/booktable/checktable', 'CustomerController@checktable')->name('checktable');
+Route::get('/home/report', 'CustomerController@report')->name('report');
+Route::get('/home/report/monthly', 'CustomerController@monthly')->name('monthly');
+Route::get('/home/monthly', 'PageController@monthly')->name('monthlyview');
 Route::resource('/home/dashboard','DashboardController');
 
 

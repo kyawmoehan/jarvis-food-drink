@@ -43,4 +43,8 @@ class PageController extends Controller
     {
         return view('pages/contact');
     }
+    public function monthly($var = '')
+    {
+        return view('layouts/pages/monthly');
+    }
 }

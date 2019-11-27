@@ -108,5 +108,13 @@ class CustomerController extends Controller
         $info =[$customers,$Tables];
         return $info;
     }
+    public function report(){
+        $reports = Customer::all();
+        return view('layouts.pages.report',compact('reports'));
+    }
+    public function monthly(){
+        $customers = Customer::all();
+        return $customers;
+    }
  
 }
